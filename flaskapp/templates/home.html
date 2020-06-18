@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Welcome to my Application Project</h3>
+
+<br><br><br><br><br><br><br>
+{% if current_user.is_authenticated %}
+<h3>Hello {{ current_user.username }}</h3>
+<h2>Please select the Application you want to use from the pannel</h2>
+{% else %}
+<h3>Hello </h3>
+<h2>Please Log in to use this service</h2>
+{% endif %}
+
+{% endblock content %}

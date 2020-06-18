@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="media">
+    <img class="rounded-circle account-img" src="{{ image_file }}">
+    <div class="media-body">
+      <h2 class="account-heading">{{ current_user.username }}</h2>
+      <p class="text-secondary">{{ current_user.email }}</p>
+    </div>
+  </div>
+    <form id="upload-file" method=post enctype=multipart/form-data>
+      <label for="imageUpload" class="upload-label">
+        Choose a photo to predict
+    </label>
+    <br><br>
+        <input type=file name=file id="imageUpload" accept=".png, .jpg, .jpeg" value=Upload>
+        <br>
+        <br><br><br><br><br>
+        <img id="blah" src="#" alt="your image" width="250" height="250"/>
+        <img id="view" src="{{ pr_iamge }}" width="250" height="250"  />
+        <br><br>
+        <input type=submit value=Predict>
+        
+      </form>
+      
+    <div>
+        <h2 class="account-heading" id="results">{{ result }}</h2>
+        
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+
+$('#blah').hide()
+
+
+function readURL(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+reader.onload = function(e) {
+$('#blah').attr('src', e.target.result);
+}
+reader.readAsDataURL(input.files[0]); // convert to base64 string
+}
+}
+
+$("#imageUpload").change(function() {
+  $('#view').toggle()
+  $('#results').toggle()
+  $('#blah').show()
+readURL(this);
+});
+
+
+
+})
+</script>
+{% endblock content %}
