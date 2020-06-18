@@ -11,7 +11,7 @@ Description: This app contains deep learining web application made with flask co
 
 How to run:
 - install the requitements 
-- run get_model.py to download the vgg19 model and put it inside flask app folder
+- run get_model.py to download the vgg19 model 
 - run run.py
 
 Application:
